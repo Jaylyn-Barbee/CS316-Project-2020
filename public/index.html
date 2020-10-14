@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="author" content="Naman Agarwal">
+  <meta charset="utf-8">
+  <!-- stop the web browser from ever caching this page or its images -->
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/http-vue-loader"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/1.4.5/vuefire.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+  <title>Collab</title>
+</head>
+<body>
+  <!-- root element that connects to Vue --> 
+  <div id="my-app" :style="{ backgroundColor: backgroundColor['.value'], backgroundImage: 'url(' + backgroundImage['.value'] + ')' }">
+      <!-- nav bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+          <a class="navbar-brand" href="#"><i class="fa fa-adjust" aria-hidden="true"></i>  Collab</a>
+          <div class="collapse navbar-collapse">
+            <h5 class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <img v-if="this.loggedInUser.name.length > 0" :src="loggedInUser.image" id="propic">
+              <!-- <p v-if="this.loggedInUser.name.length > 0" style="color: white">Welcome, {{ loggedInUser.name }}</p> -->
+            </h5>
+            <button v-if="this.loggedInUser.name.length == 0" class="btn btn-info my-2 my-lg-0 mr-3" type="button" @click="openSignIn">Sign In</button>
+            <button v-if="this.loggedInUser.name.length == 0" class="btn btn-success my-2 my-lg-0 mr-3" type="button" @click="openRegister">Register</button>
+
+            <label v-if="this.loggedInUser.name.length > 0" class="btn btn-primary my-2 my-lg-0 mr-3">Change Background Color
+                <input type="color" value="#ff0000" @change="setColor($event)" hidden>
+            </label>
+            <label v-if="this.loggedInUser.name.length > 0" class="btn btn-primary my-2 my-lg-0 mr-3">Set Background Image
+                <input type="file" @change="backgroundImageUpload($event)" class="custom-file-input" hidden>
+              </label>
+            <button v-if="this.loggedInUser.name.length > 0" class="btn btn-primary my-2 my-lg-0 mr-3" type="button" @click="openCategories">Filter Categories</button>
+            <form v-if="this.loggedInUser.name.length > 0" class="form-inline my-2 my-lg-0">
+              <input v-model="newList" class="form-control mr-sm-2" type="search" placeholder="Create a new list" aria-label="Create a List">
+              <button class="btn btn-success my-2 my-sm-0 mr-3" type="button" @click="createNewList">Submit</button>
+            </form>
+            <button v-if="this.loggedInUser.name.length > 0" class="btn btn-danger my-2 my-lg-0" type="button" @click="logout">Log Out</button>
+          </div>
+          <!-- nav bar modals for login, register, categories handled by the above functions  -->
+          <login :users="users" :show="showSignIn" @close="closeSignIn" @login="login"></login>
+          <register :show="showRegister" @close="closeRegister" @create-user="createUser"></register>
+          <categories :show="showCategories" @close="closeCategories" :categories="categories" 
+           :checkedcategories="checkedCategories" @input="checkedCategories = $event" 
+           @create-cat="createCategory" @edit-cat="editCategory"></categories>
+        </nav>
+    <!-- div that controls the background color/image using the style bindings from the header buttons -->
+    <div v-if="this.loggedInUser.name.length" class="backgroundwrapper">
+      <div class="row board">
+        <!-- generates List components and handles its methods -->
+        <template v-for="(list, index) in myLists">
+          <list :list="list" :index="index" :length="lengthLists" :tasks="allTasks" :users="users" :checkedcategories="checkedCategories" :allcategories="categories"
+          @delete-list="deleteList(list)" @move-list-left="moveListLeft(list)" @move-list-right="moveListRight(list)"
+          @create-task="createTask" @delete-task="deleteTask" @move-task-left="moveTaskLeft" @move-task-right="moveTaskRight"
+          @edit-list-name="editListName"></list>
+        </template>
+      </div>
+    </div>
+    <div v-else class = "row board">
+      <div class = "col-4 offset-1 my-auto" id="message-container" >
+        <h1 id ="landing-message">With Collab, <br> manage your tasks together, seamlessly</h1>
+      </div>
+      <div class = "col-1">
+      </div>
+      <div class = "col-6">
+        <img src="Collab%20Image.png" id="landing-img">
+      </div>
+    </div>
+    <div id = "privacy-link">
+        <a href="">Terms of Service </a>
+        |
+        <a href="">Privacy Policy </a>
+      </div>
+  </div>
+
+  <style>
+  /* helps with responsiveness of the page */
+  html, div{
+    max-width: 100%;
+  }
+  #my-app {
+    min-height: 100vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-size: 100%;
+  }
+  .row{
+    max-width: 100%;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  .board {
+    padding-top: 5% !important;
+  }
+
+  #propic {
+    display: inline;
+    object-fit: cover;
+    overflow: hidden;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 50%;
+    border-spacing: 2.5em;
+  }
+    #landing-img{
+      margin-top: 10%;
+      height:80%;
+      width:100%;
+
+    }
+
+    #landing-message{
+      font-size: 2.75rem;
+      line-height: 1.18181818;
+    }
+
+    #message-container {
+      display: flex;
+    }
+
+    #privacy-link{
+      position: absolute;
+      bottom: 0;
+      text-align: center;
+      width:100%;
+    }
+
+</style>
+<script src="app.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- Firebase Section -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.22.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.22.1/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+</body>
+</html>
