@@ -14,13 +14,61 @@
   <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/1.4.5/vuefire.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-  <title>Collab</title>
+  <title>MegaCook</title>
 </head>
 <body>
-  <!-- root element that connects to Vue --> 
-  <div id="my-app">
-      <h1 v-if="this.recipes"> {{this.recipes[16].RecipeName}} </h1>
-      <img :src="this.recipes[16].RecipePhoto">
+    <!-- root element that connects to Vue :style="{ backgroundColor: backgroundColor['.value'], backgroundImage: 'url(' + backgroundImage['.value'] + ')' }" --> 
+    <div id="my-app">
+      <!-- nav bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+          <a class="navbar-brand" href="#"><i class="fa fa-adjust" aria-hidden="true"></i>  MegaCook</a>
+          <div class="collapse navbar-collapse">
+            <h5 class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <img v-if="this.loggedInUser.name.length > 0" :src="loggedInUser.image" id="propic">
+              <!-- <p v-if="this.loggedInUser.name.length > 0" style="color: white">Welcome, {{ loggedInUser.name }}</p> -->
+            </h5>
+            <button v-if="this.loggedInUser.name.length == 0" class="btn btn-info my-2 my-lg-0 mr-3" type="button" @click="openSignIn">Sign In</button>
+            <button v-if="this.loggedInUser.name.length == 0" class="btn btn-success my-2 my-lg-0 mr-3" type="button" @click="openRegister">Register</button>
+
+            <label v-if="this.loggedInUser.name.length > 0" class="btn btn-primary my-2 my-lg-0 mr-3">Change Background Color
+                <input type="color" value="#ff0000" @change="setColor($event)" hidden>
+            </label>
+            <label v-if="this.loggedInUser.name.length > 0" class="btn btn-primary my-2 my-lg-0 mr-3">Set Background Image
+                <input type="file" @change="backgroundImageUpload($event)" class="custom-file-input" hidden>
+              </label>
+            <button v-if="this.loggedInUser.name.length > 0" class="btn btn-danger my-2 my-lg-0" type="button" @click="logout">Log Out</button>
+          </div>
+          <!-- nav bar modals for login, register, categories handled by the above functions  -->
+          <login :users="users" :show="showSignIn" @close="closeSignIn" @login="login"></login>
+          <register :show="showRegister" @close="closeRegister" @create-user="createUser"></register>
+        </nav>
+    <!-- div that controls the background color/image using the style bindings from the header buttons -->
+    <div v-if="this.loggedInUser.name.length" class="backgroundwrapper">
+      <div class="row board">
+        <!-- generates List components and handles its methods 
+        <template v-for="(list, index) in myLists">
+          <list :list="list" :index="index" :length="lengthLists" :tasks="allTasks" :users="users" :checkedcategories="checkedCategories" :allcategories="categories"
+          @delete-list="deleteList(list)" @move-list-left="moveListLeft(list)" @move-list-right="moveListRight(list)"
+          @create-task="createTask" @delete-task="deleteTask" @move-task-left="moveTaskLeft" @move-task-right="moveTaskRight"
+          @edit-list-name="editListName"></list>
+        </template> -->
+      </div>
+    </div>
+    <div v-else class = "row board">
+      <div class = "col-4 offset-1 my-auto" id="message-container" >
+        <h1 id ="landing-message">With MegaCook, <br> manage your recipes together, seamlessly</h1>
+      </div>
+      <div class = "col-1">
+      </div>
+      <div class = "col-6">
+        <img src="./assets/image.png" id="landing-img">
+      </div>
+    </div> 
+    <div id = "privacy-link">
+        <a href="">Terms of Service </a>
+        |
+        <a href="">Privacy Policy </a>
+      </div>
   </div>
   
 
@@ -62,16 +110,13 @@
       width:100%;
 
     }
-
     #landing-message{
       font-size: 2.75rem;
       line-height: 1.18181818;
     }
-
     #message-container {
       display: flex;
     }
-
     #privacy-link{
       position: absolute;
       bottom: 0;
@@ -84,17 +129,5 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-<!-- Firebase Section -->
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/7.22.1/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/7.22.1/firebase-analytics.js"></script>
-
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
-
 </body>
 </html>
