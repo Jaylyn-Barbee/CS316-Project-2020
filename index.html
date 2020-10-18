@@ -45,13 +45,20 @@
     <!-- div that controls the background color/image using the style bindings from the header buttons -->
     <div v-if="this.loggedInUser.name.length" class="backgroundwrapper">
       <div class="row board">
-        <!-- generates List components and handles its methods 
-        <template v-for="(list, index) in myLists">
-          <list :list="list" :index="index" :length="lengthLists" :tasks="allTasks" :users="users" :checkedcategories="checkedCategories" :allcategories="categories"
-          @delete-list="deleteList(list)" @move-list-left="moveListLeft(list)" @move-list-right="moveListRight(list)"
-          @create-task="createTask" @delete-task="deleteTask" @move-task-left="moveTaskLeft" @move-task-right="moveTaskRight"
-          @edit-list-name="editListName"></list>
-        </template> -->
+        <div class = "col-3" id="message-container" >
+          <h2 class="row-fluid">Ingredients</h2>
+          <div class="row-fluid">
+            <ul>
+              <li v-for="ing in ingredients">{{ ing.name + " - " + ing.category }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class = "col-9">
+          <h2>Recipes</h2>
+          <ul>
+            <li v-for="recipe in recipes">{{ recipe['Recipe Name'] + ' by ' + recipe['Author'] }}</li>
+          </ul>
+        </div>
       </div>
     </div>
     <div v-else class = "row board">

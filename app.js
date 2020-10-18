@@ -17,7 +17,7 @@ var loggedInRef = db.ref('loggedinUser')
 var bgColRef = db.ref('backgroundColor')
 var bgImgRef = db.ref('backgroundImage')
 var ingredientsRef = db.ref('ingredientsList');
-var recipesRef = db.ref('recipeList');
+var recipesRef = db.ref('recipesList');
 
 // connect Firebase to Vue
 Vue.use(VueFire)
