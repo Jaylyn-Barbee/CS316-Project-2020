@@ -10,4 +10,5 @@ Instructions on how data was cleaned:
     - find & replace "{ with {
     - find & repalce }" with }
     - find & replace "": [0-9], (in regex mode) with nothing
+    - find & replace "Prepare Time" with "PrepareTime"
 4. upload new recipeList to firebase
