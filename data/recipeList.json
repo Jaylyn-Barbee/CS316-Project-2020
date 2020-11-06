@@ -1,5 +1,6 @@
 [
   {
+    
     "RecipeName": "Golden Crescent Rolls Recipe",
     "RecipeID": 7000,
     "ReviewCount": 304,
@@ -9,9 +10,11 @@
     "CookTime": "15 m",
     "TotalTime": "3 h 10 m",
     "Ingredients": {"0": "2 (.25 ounce) packages active dry yeast", "1": "3/4 cup warm water (110 degrees F/45 degrees C)", "2": "1/2 cup white sugar", "3": "1 teaspoon salt", "4": "2 eggs", "5": "1/2 cup butter, room temperature", "6": "4 cups all-purpose flour", "7": "1/4 cup butter, softened"},
-    "Directions": {"0": "Dissolve yeast in warm water.", "1": "Stir in sugar, salt, eggs, butter, and 2 cups of flour. Beat until smooth. Mix in remaining flour until smooth. Scrape dough from side of bowl. Knead dough, then cover it and let rise in a warm place until double (about 1 1/2 hours).", "2": "Punch down dough. Divide in half. Roll each half into a 12-inch circle. Spread with butter. Cut into 10 to 15 wedge. Roll up the wedges starting with the wide end. Place rolls with point under on a greased baking sheet. Cover and let rise until double (about 1 hour).", "3": "Bake at 400 degrees F (205 degrees C) for 12-15 minute or until golden brown. Brush tops with butter when they come out of the oven.", "4": ""}
+    "Directions": {"0": "Dissolve yeast in warm water.", "1": "Stir in sugar, salt, eggs, butter, and 2 cups of flour. Beat until smooth. Mix in remaining flour until smooth. Scrape dough from side of bowl. Knead dough, then cover it and let rise in a warm place until double (about 1 1/2 hours).", "2": "Punch down dough. Divide in half. Roll each half into a 12-inch circle. Spread with butter. Cut into 10 to 15 wedge. Roll up the wedges starting with the wide end. Place rolls with point under on a greased baking sheet. Cover and let rise until double (about 1 hour).", "3": "Bake at 400 degrees F (205 degrees C) for 12-15 minute or until golden brown. Brush tops with butter when they come out of the oven.", "4": ""},
+    "rawFood": {"0": "yeast", "1": "sugar", "2": "flour"}
   },
   {
+    
     "RecipeName": "Poppy Seed Bread with Glaze Recipe",
     "RecipeID": 7001,
     "ReviewCount": 137,
@@ -21,9 +24,11 @@
     "CookTime": "1 h",
     "TotalTime": "1 h 20 m",
     "Ingredients": {"0": "3 cups all-purpose flour", "1": "1 1/2 teaspoons salt", "2": "1 1/2 teaspoons baking powder", "3": "3 tablespoons poppy seeds", "4": "1 1/2 teaspoons butter flavored extract", "5": "1 1/3 cups vegetable oil", "6": "3 eggs", "7": "1 1/2 cups milk", "8": "2 1/4 cups white sugar", "9": "1 1/2 teaspoons vanilla extract", "10": "1 1/2 teaspoons almond extract", "11": "1/4 cup orange juice", "12": "1/2 teaspoon butter flavored extract", "13": "1/2 teaspoon almond extract", "14": "1 teaspoon vanilla extract", "15": "2 cups confectioners sugar"},
-    "Directions": {"0": "Preheat oven to 350 degrees F (175 degrees C). Grease bottoms of two 9-inch loaf pans.", "1": "Mix together flour, salt, baking powder, poppy seeds, butter flavoring, oil, eggs, milk, sugar, vanilla, and almond flavoring. Pour into prepared pans.", "2": "Bake at 350 degrees F (175 degrees C) for one hour. Cool 5 minutes. Poke holes in top of loaves and pour glaze over.", "3": "To make glaze: Mix orange juice, 1/2 teaspoon butter flavoring, 1/2 teaspoon almond flavoring, and 1 teaspoon vanilla. Add enough confectioners sugar to make glaze.", "4": ""}
+    "Directions": {"0": "Preheat oven to 350 degrees F (175 degrees C). Grease bottoms of two 9-inch loaf pans.", "1": "Mix together flour, salt, baking powder, poppy seeds, butter flavoring, oil, eggs, milk, sugar, vanilla, and almond flavoring. Pour into prepared pans.", "2": "Bake at 350 degrees F (175 degrees C) for one hour. Cool 5 minutes. Poke holes in top of loaves and pour glaze over.", "3": "To make glaze: Mix orange juice, 1/2 teaspoon butter flavoring, 1/2 teaspoon almond flavoring, and 1 teaspoon vanilla. Add enough confectioners sugar to make glaze.", "4": ""},
+    "rawFood": {"0": "vanilla", "1": "milk", "2": "butter", "3": "orange", "4": "flour", "5": "sugar", "6": "almond"}
   },
   {
+    
     "RecipeName": "Czech Christmas Hoska Recipe",
     "RecipeID": 7002,
     "ReviewCount": 11,
@@ -33,6 +38,133 @@
     "CookTime": "45 m",
     "TotalTime": "5 h 30 m",
     "Ingredients": {"0": "1 (0.6 ounce) cake compressed fresh yeast", "1": "1/4 cup warm water (110 degrees F/45 degrees C)", "2": "1/2 cup white sugar", "3": "1/2 cup butter", "4": "1 egg, beaten", "5": "1 teaspoon salt", "6": "2 cups scalded milk", "7": "6 cups all-purpose flour", "8": "1 pinch ground ginger", "9": "1 pinch ground mace", "10": "1/4 teaspoon orange zest", "11": "1/2 cup golden raisins", "12": "1/2 cup candied mixed fruit peel", "13": "1/2 cup blanched slivered almonds", "14": "1 egg yolk", "15": "1 tablespoon milk", "16": "2 tablespoons confectioners sugar"},
-    "Directions": {"0": "Dissolve yeast in warm water.", "1": "In a large bowl, cream sugar and butter. Add beaten egg and salt. Stir in cooled milk and then the yeast. Add 1 1/2 cups sifted flour"}
+    "Directions": {"0": "Dissolve yeast in warm water.", "1": "In a large bowl, cream sugar and butter. Add beaten egg and salt. Stir in cooled milk and then the yeast. Add 1 1/2 cups sifted flour"},
+    "rawFood": {"0": "milk", "1": "butter", "2": "orange", "3": "yeast", "4": "flour", "5": "egg", "6": "ginger", "7": "sugar"}
+  },
+  {
+    
+    "RecipeName": "Applesauce Bread I Recipe",
+    "RecipeID": 7003,
+    "ReviewCount": 124,
+    "RecipePhoto": "https://images.media-allrecipes.com/userphotos/560x315/1024884.jpg",
+    "Author": "GAF55",
+    "PrepareTime": "10 m",
+    "CookTime": "1 h 20 m",
+    "TotalTime": "1 h 30 m",
+    "Ingredients": {"0": "3 cups all-purpose flour", "1": "3 eggs", "2": "2 cups white sugar", "3": "1 cup vegetable oil", "4": "2 cups applesauce", "5": "1 cup raisins (optional)", "6": "1 teaspoon ground cinnamon", "7": "1 teaspoon baking soda", "8": "1/4 teaspoon baking powder", "9": "1/2 cup sour cream"},
+    "Directions": {"0": "Preheat oven to 350 degrees F (175 degrees C).  Grease and flour two 9 x 5 inch loaf pans.", "1": "Beat together eggs, sugar, and oil.  Blend in applesauce, and then sour cream or buttermilk.  Mix in flour, baking powder, soda, and cinnamon. Stir in raisins. Pour batter into prepared pans.", "2": "Bake for 80 minutes.  Cool on wire racks.", "3": ""},
+    "rawFood": {"0": "cream", "1": "flour", "2": "sugar", "3": "cinnamon"}
+  },
+  {
+    
+    "RecipeName": "Raisin Brown Bread Recipe",
+    "RecipeID": 7004,
+    "ReviewCount": 5,
+    "RecipePhoto": "https://images.media-allrecipes.com/userphotos/560x315/4507370.jpg",
+    "Author": "Tina",
+    "PrepareTime": "30 m",
+    "CookTime": "40 m",
+    "TotalTime": "3 h 10 m",
+    "Ingredients": {"0": "2 cups boiling water", "1": "1 cup rolled oats", "2": "2 tablespoons shortening", "3": "3 tablespoons brown sugar", "4": "4 teaspoons salt", "5": "1 cup molasses", "6": "1/2 cup warm water (110 degrees F/45 degrees C)", "7": "1 teaspoon white sugar", "8": "2 tablespoons active dry yeast", "9": "3 cups warm water (110 degrees F/45 degrees C)", "10": "12 cups bread flour", "11": "1 1/2 cups raisins", "12": "1 1/2 teaspoons ground cinnamon"},
+    "Directions": {"0": "Combine boiling water, oats, shortening, brown sugar, salt, and molasses.  Allow to cool.", "1": "Stir 1/2 cup warm water and 1 teaspoon white sugar until sugar is dissolved.  Sprinkle yeast over this mixture, and proof while oats are cooling.", "2": "Add 3 cups of warm water to the cooled oat mixture.  Stir in yeast.  Begin stirring in flour 1 cup at a time until it begins to get hard to stir.  Dredge raisins in flour, and mix with cinnamon"},
+    "rawFood": {"0": "molasses", "1": "yeast", "2": "flour", "3": "shortening", "4": "bread", "5": "cinnamon", "6": "sugar"}
+  },
+  {
+    
+    "RecipeName": "Applesauce Raisin Bread Recipe",
+    "RecipeID": 7005,
+    "ReviewCount": 32,
+    "RecipePhoto": "https://images.media-allrecipes.com/userphotos/560x315/251827.jpg",
+    "Author": "Helen Hanson",
+    "PrepareTime": "15 m",
+    "CookTime": "1 h",
+    "TotalTime": "1 h 15 m",
+    "Ingredients": {"0": "1 1/2 cups all-purpose flour", "1": "1 1/2 teaspoons baking powder", "2": "1/2 teaspoon baking soda", "3": "1 1/2 teaspoons ground cinnamon", "4": "1 cup quick cooking oats", "5": "3/4 cup packed brown sugar", "6": "3/4 cup raisins", "7": "1 1/4 cups applesauce", "8": "1/3 cup vegetable oil", "9": "2 eggs, beaten", "10": "1/4 cup milk", "11": "1/4 cup apple juice"},
+    "Directions": {"0": "Preheat oven to 350 degrees F (175 degrees C).  Grease and flour an 8 1/2 x 4 1/2 inch loaf pan.", "1": "Soak raisins in apple juice.", "2": "In a large bowl, whisk together flour, baking powder, soda, cinnamon, oats, and brown sugar.  Add applesauce, oil, eggs, and milk"},
+    "rawFood": {"0": "apple", "1": "milk", "2": "flour", "3": "cinnamon", "4": "sugar"}
+  },
+  {
+    
+    "RecipeName": "Apple Raisin Bread Recipe",
+    "RecipeID": 7006,
+    "ReviewCount": 39,
+    "RecipePhoto": "https://images.media-allrecipes.com/userphotos/560x315/21563.jpg",
+    "Author": "Helen Hanson",
+    "PrepareTime": "15 m",
+    "CookTime": "1 h",
+    "TotalTime": "1 h 15 m",
+    "Ingredients": {"0": "1 1/2 cups all-purpose flour", "1": "2 teaspoons baking powder", "2": "1/4 teaspoon baking soda", "3": "1 teaspoon salt", "4": "1 1/4 teaspoons ground cinnamon", "5": "1/4 teaspoon ground nutmeg", "6": "2/3 cup packed brown sugar", "7": "1 cup rolled oats", "8": "1 1/2 cups grated apple", "9": "1/4 cup chopped walnuts", "10": "1/4 cup raisins", "11": "2 eggs", "12": "1/4 cup milk", "13": "1/4 cup vegetable oil"},
+    "Directions": {"0": "Preheat oven to 350 degrees F (175 degrees C).  Grease and flour an 8 1/2 x 4 1/2 inch loaf pan.", "1": "In a large bowl, combine flour, baking powder, baking soda, salt, cinnamon, nutmeg, brown sugar, and  oats.  Add apple, nuts, raisins, eggs, milk, and oil.  Mix until dry ingredients are moistened.", "2": "Bake for 55 to 60 minutes, or until done.  Cool on wire rack.", "3": ""},
+    "rawFood": {"0": "apple", "1": "milk", "2": "flour", "3": "cinnamon", "4": "sugar", "5": "nutmeg"}
+  },
+  {
+    
+    "RecipeName": "Buttermilk Oatmeal Bread Recipe",
+    "RecipeID": 7007,
+    "ReviewCount": 41,
+    "RecipePhoto": "https://images.media-allrecipes.com/userphotos/560x315/1149697.jpg",
+    "Author": "Helen Hanson",
+    "PrepareTime": "10 m",
+    "CookTime": "1 h",
+    "TotalTime": "1 h 40 m",
+    "Ingredients": {"0": "1 cup rolled oats", "1": "1 cup buttermilk", "2": "1/2 cup vegetable oil", "3": "1 egg", "4": "1/2 cup packed brown sugar", "5": "1 cup all-purpose flour", "6": "1 teaspoon baking powder", "7": "1/2 teaspoon baking soda", "8": "1/2 teaspoon salt"},
+    "Directions": {"0": "Mix oats with buttermilk.  Let stand for 1/2 hour.", "1": "Stir oil, egg, and brown sugar into oat mixture. Stir together flour, baking powder, soda, and salt: mix into oat mixture.  Pour batter into a greased and floured 8 1/2 x 4 1/2 inch loaf pan.", "2": "Bake at 350 degrees F (175 degrees C) for 55 to 60 minutes, or until done.", "3": ""},
+    "rawFood": {"0": "sugar", "1": "buttermilk", "2": "egg", "3": "flour"}
+  },
+  {
+    
+    "RecipeName": "Kolaches II Recipe",
+    "RecipeID": 7008,
+    "ReviewCount": 27,
+    "RecipePhoto": "https://images.media-allrecipes.com/userphotos/250x250/943400.jpg",
+    "Author": "Nan",
+    "PrepareTime": "30 m",
+    "CookTime": "20 m",
+    "TotalTime": "2 h 5 m",
+    "Ingredients": {"0": "1 cup shortening", "1": "1/2 cup white sugar", "2": "1 1/2 teaspoons salt", "3": "2 1/2 cups scalded milk", "4": "4 egg yolks, beaten", "5": "1/2 teaspoon lemon extract", "6": "1 1/2 tablespoons active dry yeast", "7": "5 cups all-purpose flour", "8": "1/2 cup fruit preserves"},
+    "Directions": {"0": "Cream shortening and sugar together.  Stir in salt, hot milk, beaten egg yolks, and flavoring.  When lukewarm, add yeast to mixture.  Let stand 5 minutes.  Add flour, beating well.  Knead down into bowl.  The dough will be slightly sticky.  Let rise 1 hour.", "1": "Cut off small balls of dough.  Roll into rounds in your hands, and place on greased cookie sheets 2 inches apart.  Let rise 15 minutes.", "2": "Make a depression into the center of each roll.  Fill with fruit preserves.", "3": "Bake at 450 degrees F (230 degrees C) until brown.  Watch carefully.  Cool on wire racks.", "4": ""},
+    "rawFood": {"0": "milk", "1": "lemon", "2": "yeast", "3": "egg", "4": "shortening", "5": "flour", "6": "sugar"}
+  },
+  {
+    
+    "RecipeName": "Whole Wheat Bread II Recipe",
+    "RecipeID": 7009,
+    "ReviewCount": 91,
+    "RecipePhoto": "https://images.media-allrecipes.com/userphotos/560x315/5504282.jpg",
+    "Author": "Ruth Uitto",
+    "PrepareTime": "20 m",
+    "CookTime": "35 m",
+    "TotalTime": "2 h 25 m",
+    "Ingredients": {"0": "1/3 cup shortening", "1": "1 cup hot water", "2": "1 cup packed brown sugar", "3": "3 (.25 ounce) packages active dry yeast", "4": "4 cups warm water (110 degrees F/45 degrees C)", "5": "4 tablespoons white sugar", "6": "4 teaspoons salt", "7": "6 cups bread flour", "8": "6 cups whole wheat flour"},
+    "Directions": {"0": "Dissolve brown sugar in 1 cup hot water.  Add shortening, and stir to melt.  Let cool.", "1": "In a large bowl, dissolve yeast in 4 cups warm water.  Add white sugar, salt, and bread flour.  Beat well.  Stir in shortening mixture.  Stir in enough whole wheat flour to make a stiff but not dry dough.", "2": "Turn out onto a lightly floured surface.  Knead until smooth and elastic.  Place in a large, well oiled bowl.  Cover, and allow to rise until dough doubles in bulk.", "3": "Divide dough into four equal parts.  Shape into loaves.  Place in greased, 9 x 5 inch pans,  turning each loaf over in pan to grease top.  Allow to rise until dough doubles in bulk.", "4": "Bake at 350 degrees F (175 degrees C) for 35 minutes. Let cool before slicing.", "5": ""},
+    "rawFood": {"0": "wheat", "1": "yeast", "2": "flour", "3": "bread", "4": "shortening", "5": "sugar"}
+  },
+  {
+    
+    "RecipeName": "Finnish Pulla Recipe",
+    "RecipeID": 7010,
+    "ReviewCount": 150,
+    "RecipePhoto": "https://images.media-allrecipes.com/userphotos/560x315/8008.jpg",
+    "Author": "Kim B.",
+    "PrepareTime": "30 m",
+    "CookTime": "30 m",
+    "TotalTime": "3 h 20 m",
+    "Ingredients": {"0": "2 cups milk", "1": "1/2 cup warm water (110 degrees F/45 degrees C)", "2": "1 (.25 ounce) package active dry yeast", "3": "1 cup white sugar", "4": "1 teaspoon salt", "5": "1 teaspoon ground cardamom", "6": "4 eggs, beaten", "7": "9 cups all-purpose flour", "8": "1/2 cup butter, melted", "9": "1 egg, beaten", "10": "2 tablespoons white sugar"},
+    "Directions": {"0": "Warm the milk in a small saucepan until it bubbles, then remove from heat.  Let cool until lukewarm.", "1": "Dissolve the yeast in the warm water.  Stir in the lukewarm milk, sugar, salt, cardamom, 4 eggs, and enough flour to make a batter (approximately 2 cups).  Beat until the dough is smooth and elastic.  Add about 3 cups of the flour and beat well"},
+    "rawFood": {"0": "milk", "1": "yeast", "2": "flour", "3": "sugar", "4": "cardamom"}
+  },
+  {
+    
+    "RecipeName": "Chinese Steamed Buns Recipe",
+    "RecipeID": 7011,
+    "ReviewCount": 144,
+    "RecipePhoto": "https://images.media-allrecipes.com/userphotos/560x315/1121464.jpg",
+    "Author": "Carol chi-wa Chung",
+    "PrepareTime": "30 m",
+    "CookTime": "30 m",
+    "TotalTime": "4 h",
+    "Ingredients": {"0": "1 tablespoon active dry yeast", "1": "1 teaspoon white sugar", "2": "1/4 cup all-purpose flour", "3": "1/4 cup water", "4": "1/2 cup warm water", "5": "1 1/2 cups all-purpose flour", "6": "1/4 teaspoon salt", "7": "2 tablespoons white sugar", "8": "1 tablespoon vegetable oil", "9": "1/2 teaspoon baking powder"},
+    "Directions": {"0": "Mix together yeast, 1 teaspoon sugar, 1/4 cup flour, and 1/4 cup warm water.  Allow to stand for 30 minutes.", "1": "Mix in 1/2 cup warm water, flour, salt, 2 tablespoons sugar, and vegetable oil.  Knead until dough surface is smooth and elastic.  Roll over in a greased bowl, and let stand until triple in size, about 2 1/2 to 3 hours.", "2": "Punch down dough, and spread out on a floured board.  Sprinkle baking powder evenly on surface, and knead for 5 minutes.  Divide dough into 2 parts, and place the piece you are not working with in a covered bowl.  Divide each half into 12 parts. Shape each part into a ball with smooth surface up. Put each ball on a wax paper square.   Let stand covered until double, about 30 minutes.", "3": "Bring water to a boil in wok, and reduce heat to medium"},
+    "rawFood": {"0": "yeast", "1": "sugar", "2": "flour"}
   }
 ]
