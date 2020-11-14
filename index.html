@@ -1,140 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta name="author" content="Naman Agarwal">
-  <meta charset="utf-8">
-  <!-- stop the web browser from ever caching this page or its images -->
-  <meta http-equiv="Cache-Control" content="no-cache" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://unpkg.com/vue"></script>
-  <script src="https://unpkg.com/http-vue-loader"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/1.4.5/vuefire.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-  <title>MegaCook</title>
-</head>
-<body>
-    <!-- root element that connects to Vue :style="{ backgroundColor: backgroundColor['.value'], backgroundImage: 'url(' + backgroundImage['.value'] + ')' }" --> 
+  <head>
+    <meta name="author" content="Naman Agarwal" />
+    <meta charset="utf-8" />
+    <!-- stop the web browser from ever caching this page or its images -->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+    ></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vuefire/1.4.5/vuefire.js"></script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimal-ui"
+    />
+    <title>MegaCook</title>
+  </head>
+  <body>
+    <!-- root element that connects to Vue :style="{ backgroundColor: backgroundColor['.value'], backgroundImage: 'url(' + backgroundImage['.value'] + ')' }" -->
     <div id="my-app">
       <!-- nav bar -->
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-          <a class="navbar-brand" href="#"><i class="fa fa-adjust" aria-hidden="true"></i>  MegaCook</a>
-          <div class="collapse navbar-collapse">
-            <h5 class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <img v-if="this.loggedInUser.name.length > 0" :src="loggedInUser.image" id="propic">
-              <!-- <p v-if="this.loggedInUser.name.length > 0" style="color: white">Welcome, {{ loggedInUser.name }}</p> -->
-            </h5>
-            <button v-if="this.loggedInUser.name.length == 0" class="btn btn-info my-2 my-lg-0 mr-3" type="button" @click="openSignIn">Sign In</button>
-            <button v-if="this.loggedInUser.name.length == 0" class="btn btn-success my-2 my-lg-0 mr-3" type="button" @click="openRegister">Register</button>
+        <a class="navbar-brand" href="#"
+          ><i class="fa fa-adjust" aria-hidden="true"></i> MegaCook</a
+        >
+        <div class="collapse navbar-collapse">
+          <h5 class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <img
+              v-if="this.loggedInUser.name.length > 0"
+              :src="loggedInUser.image"
+              id="propic"
+            />
+            <!-- <p v-if="this.loggedInUser.name.length > 0" style="color: white">Welcome, {{ loggedInUser.name }}</p> -->
+          </h5>
+          <button
+            v-if="this.loggedInUser.name.length == 0"
+            class="btn btn-info my-2 my-lg-0 mr-3"
+            type="button"
+            @click="openSignIn"
+          >
+            Sign In
+          </button>
+          <button
+            v-if="this.loggedInUser.name.length == 0"
+            class="btn btn-success my-2 my-lg-0 mr-3"
+            type="button"
+            @click="openRegister"
+          >
+            Register
+          </button>
+          <button
+            v-if="this.loggedInUser.name.length > 0"
+            class="btn btn-primary my-2 my-lg-0 mr-3"
+            type="button"
+            @click="openUserProfile"
+          >
+            User Profile
+          </button>
 
-            <label v-if="this.loggedInUser.name.length > 0" class="btn btn-primary my-2 my-lg-0 mr-3">Change Background Color
-                <input type="color" value="#ff0000" @change="setColor($event)" hidden>
-            </label>
-            <label v-if="this.loggedInUser.name.length > 0" class="btn btn-primary my-2 my-lg-0 mr-3">Set Background Image
-                <input type="file" @change="backgroundImageUpload($event)" class="custom-file-input" hidden>
-              </label>
-            <button v-if="this.loggedInUser.name.length > 0" class="btn btn-danger my-2 my-lg-0" type="button" @click="logout">Log Out</button>
+          <label
+            v-if="this.loggedInUser.name.length > 0"
+            class="btn btn-primary my-2 my-lg-0 mr-3"
+            >Change Background Color
+            <input
+              type="color"
+              value="#ff0000"
+              @change="setColor($event)"
+              hidden
+            />
+          </label>
+          <label
+            v-if="this.loggedInUser.name.length > 0"
+            class="btn btn-primary my-2 my-lg-0 mr-3"
+            >Set Background Image
+            <input
+              type="file"
+              @change="backgroundImageUpload($event)"
+              class="custom-file-input"
+              hidden
+            />
+          </label>
+          <button
+            v-if="this.loggedInUser.name.length > 0"
+            class="btn btn-danger my-2 my-lg-0"
+            type="button"
+            @click="logout"
+          >
+            Log Out
+          </button>
+        </div>
+        <!-- nav bar modals for login, register, categories handled by the above functions  -->
+        <login
+          :users="users"
+          :show="showSignIn"
+          @close="closeSignIn"
+          @login="login"
+        ></login>
+        <register
+          :show="showRegister"
+          @close="closeRegister"
+          @create-user="createUser"
+        ></register>
+        <userprofile
+          :show="showUserProfile"
+          @close="closeUserProfile"
+        ></userprofile>
+      </nav>
+      <!-- div that controls the background color/image using the style bindings from the header buttons -->
+      <div v-if="this.loggedInUser.name.length" class="backgroundwrapper">
+        <div class="row board">
+          <div class="col-3" id="message-container">
+            <h2 class="row-fluid">Ingredients</h2>
+            <div class="row-fluid">
+              <ul>
+                <li v-for="ing in ingredients">
+                  {{ ing.name + " - " + ing.category }}
+                </li>
+              </ul>
+            </div>
           </div>
-          <!-- nav bar modals for login, register, categories handled by the above functions  -->
-          <login :users="users" :show="showSignIn" @close="closeSignIn" @login="login"></login>
-          <register :show="showRegister" @close="closeRegister" @create-user="createUser"></register>
-        </nav>
-    <!-- div that controls the background color/image using the style bindings from the header buttons -->
-    <div v-if="this.loggedInUser.name.length" class="backgroundwrapper">
-      <div class="row board">
-        <div class = "col-3" id="message-container" >
-          <h2 class="row-fluid">Ingredients</h2>
-          <div class="row-fluid">
+          <div class="col-9">
+            <h2>Recipes</h2>
             <ul>
-              <li v-for="ing in ingredients">{{ ing.name + " - " + ing.category }}</li>
+              <li v-for="recipe in recipes">
+                {{ recipe['RecipeName'] + ' by ' + recipe['Author'] }}
+              </li>
             </ul>
           </div>
         </div>
-        <div class = "col-9">
-          <h2>Recipes</h2>
-          <ul>
-            <li v-for="recipe in recipes">{{ recipe['RecipeName'] + ' by ' + recipe['Author'] }}</li>
-          </ul>
+      </div>
+      <div v-else class="row board">
+        <div class="col-4 offset-1 my-auto" id="message-container">
+          <h1 id="landing-message">
+            With MegaCook, <br />
+            manage your recipes together, seamlessly
+          </h1>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-6">
+          <img src="./assets/image.png" id="landing-img" />
         </div>
       </div>
-    </div>
-    <div v-else class = "row board">
-      <div class = "col-4 offset-1 my-auto" id="message-container" >
-        <h1 id ="landing-message">With MegaCook, <br> manage your recipes together, seamlessly</h1>
-      </div>
-      <div class = "col-1">
-      </div>
-      <div class = "col-6">
-        <img src="./assets/image.png" id="landing-img">
-      </div>
-    </div> 
-    <div id = "privacy-link">
+      <div id="privacy-link">
         <a href="">Terms of Service </a>
         |
         <a href="">Privacy Policy </a>
       </div>
-  </div>
-  
+    </div>
 
-  <style>
-  /* helps with responsiveness of the page */
-  html, div{
-    max-width: 100%;
-  }
-  #my-app {
-    min-height: 100vh;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-size: 100%;
-  }
-  .row{
-    max-width: 100%;
-  }
-  [hidden] {
-    display: none !important;
-  }
-  .board {
-    padding-top: 5% !important;
-  }
+    <style>
+      /* helps with responsiveness of the page */
+      html,
+      div {
+        max-width: 100%;
+      }
+      #my-app {
+        min-height: 100vh;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-size: 100%;
+      }
+      .row {
+        max-width: 100%;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      .board {
+        padding-top: 5% !important;
+      }
 
-  #propic {
-    display: inline;
-    object-fit: cover;
-    overflow: hidden;
-    height: 2.5em;
-    width: 2.5em;
-    border-radius: 50%;
-    border-spacing: 2.5em;
-  }
-    #landing-img{
-      margin-top: 10%;
-      height:80%;
-      width:100%;
-
-    }
-    #landing-message{
-      font-size: 2.75rem;
-      line-height: 1.18181818;
-    }
-    #message-container {
-      display: flex;
-    }
-    #privacy-link{
-      position: absolute;
-      bottom: 0;
-      text-align: center;
-      width:100%;
-    }
-
-</style>
-<script src="app.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+      #propic {
+        display: inline;
+        object-fit: cover;
+        overflow: hidden;
+        height: 2.5em;
+        width: 2.5em;
+        border-radius: 50%;
+        border-spacing: 2.5em;
+      }
+      #landing-img {
+        margin-top: 10%;
+        height: 80%;
+        width: 100%;
+      }
+      #landing-message {
+        font-size: 2.75rem;
+        line-height: 1.18181818;
+      }
+      #message-container {
+        display: flex;
+      }
+      #privacy-link {
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+      }
+    </style>
+    <script src="app.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
