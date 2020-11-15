@@ -33,6 +33,7 @@ new Vue({
     showSignIn: false,
     showRegister: false,
     showUserProfile: false,
+    showCreateRecipe: false,
     numberOfColumns: 4,
     checkedIngredients: [],
   },
@@ -49,7 +50,8 @@ new Vue({
     login: httpVueLoader("./components/Login.vue"),
     register: httpVueLoader("./components/Register.vue"),
     userprofile: httpVueLoader("./components/UserProfile.vue"),
-    recipe: httpVueLoader("./components/Recipe.vue")
+    recipe: httpVueLoader("./components/Recipe.vue"),
+    createrecipe: httpVueLoader("./components/CreateRecipe.vue"),
     /*'add-list': httpVueLoader('AddList.vue'),
     'list': httpVueLoader('List.vue'),
     'categories': httpVueLoader('Categories.vue') */
@@ -68,6 +70,16 @@ new Vue({
       }
       else{
         return this.ingredients;
+      }
+    },
+    filteredRecipes() {
+      let ing = this.checkedIngredients;
+      if (ing) {
+        // not sure why this doesn't work, need to filter recipes that have a rawFood that includes every checked ingredient (ing)
+        return this.recipes.filter(recipe => recipe.rawFood.every(i => ing.includes(i)))
+      }
+      else{
+        return this.recipes;
       }
     }
   },
@@ -97,6 +109,15 @@ new Vue({
     },
     closeUserProfile() {
       this.showUserProfile = false;
+    },
+    openCreateRecipe() {
+      this.showCreateRecipe = true;
+    },
+    closeCreateRecipe() {
+      this.showCreateRecipe = false;
+    },
+    addRecipe() {
+      alert("hasn't been implemented yet")
     },
     login(user) {
       this.$firebaseRefs.loggedInUser.child("name").set(user.name);

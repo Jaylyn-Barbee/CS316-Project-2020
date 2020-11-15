@@ -68,6 +68,14 @@
           >
             User Profile
           </button>
+          <button
+            v-if="this.loggedInUser.name.length > 0"
+            class="btn btn-primary my-2 my-lg-0 mr-3"
+            type="button"
+            @click="openCreateRecipe"
+          >
+            Create a Recipe
+          </button>
 
           <label
             v-if="this.loggedInUser.name.length > 0"
@@ -116,6 +124,7 @@
           :show="showUserProfile"
           @close="closeUserProfile"
         ></userprofile>
+        <createrecipe :show="showCreateRecipe" :author="this.loggedInUser" @close="closeCreateRecipe" @add-recipe="addRecipe"></createrecipe>
       </nav>
       <!-- div that controls the background color/image using the style bindings from the header buttons -->
       <div v-if="this.loggedInUser.name.length" class="backgroundwrapper">
