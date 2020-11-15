@@ -36,6 +36,10 @@ new Vue({
     showCreateRecipe: false,
     numberOfColumns: 4,
     checkedIngredients: [],
+    filteredRecipes: []
+  },
+  created(){
+    this.filteredRecipes = this.recipes
   },
   firebase: {
     users: usersRef,
@@ -73,15 +77,22 @@ new Vue({
         return this.ingredients;
       }
     },
-    filteredRecipes() {
-      let ing = this.checkedIngredients;
-      if (ing) {
-        // not sure why this doesn't work, need to filter recipes that have a rawFood that includes every checked ingredient (ing)
-        return this.recipes.filter(recipe => recipe.rawFood.every(i => ing.includes(i)))
-      }
-      else{
-        return this.recipes;
-      }
+  },
+  watch: {
+    checkedIngredients: function(newI, oldI) {
+        if (newI.length == 0) {
+          this.filteredRecipes = this.recipes;
+        }
+        else {
+          let filtered = [];
+          let recipes = this.recipes;
+          for (i = 0; i < recipes.length; i++){
+            if (recipes[i].rawFood && recipes[i].rawFood.some(function(item) { return newI.indexOf(item) !== -1;})) {
+              filtered.push(recipes[i]);
+            }
+          }
+          this.filteredRecipes =  filtered;
+        }
     }
   },
   methods: {
