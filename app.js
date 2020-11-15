@@ -29,8 +29,8 @@ new Vue({
     backgroundColorVal: "",
     backgroundImageVal: "",
     newList: "",
-    searchQuery: '',
-    recipeSearch: '',
+    searchQuery: "",
+    recipeSearch: "",
     showSignIn: false,
     showRegister: false,
     showUserProfile: false,
@@ -39,8 +39,8 @@ new Vue({
     checkedIngredients: [],
     filteredRecipes: []
   },
-  created(){
-    this.filteredRecipes = this.recipes
+  created() {
+    this.filteredRecipes = this.recipes;
   },
   firebase: {
     users: usersRef,
@@ -56,7 +56,7 @@ new Vue({
     register: httpVueLoader("./components/Register.vue"),
     userprofile: httpVueLoader("./components/UserProfile.vue"),
     recipe: httpVueLoader("./components/Recipe.vue"),
-    createrecipe: httpVueLoader("./components/CreateRecipe.vue"),
+    createrecipe: httpVueLoader("./components/CreateRecipe.vue")
     /*'add-list': httpVueLoader('AddList.vue'),
     'list': httpVueLoader('List.vue'),
     'categories': httpVueLoader('Categories.vue') */
@@ -66,44 +66,60 @@ new Vue({
       let numberOfColumns = Math.floor(window.screen.width / 400);
       return {
         gridTemplateColumns: `repeat(${numberOfColumns}, minmax(200px, 1fr))`
-      }
+      };
     },
     filteredIngredients() {
       if (this.searchQuery) {
-        return this.ingredients.filter((item)=>{
-          return (item.name.toLowerCase().startsWith(this.searchQuery.toLowerCase()) || item.category.toLowerCase().startsWith(this.searchQuery.toLowerCase()));
-        })
-      }
-      else{
+        return this.ingredients.filter((item) => {
+          return (
+            item.name
+              .toLowerCase()
+              .startsWith(this.searchQuery.toLowerCase()) ||
+            item.category
+              .toLowerCase()
+              .startsWith(this.searchQuery.toLowerCase())
+          );
+        });
+      } else {
         return this.ingredients;
       }
     },
     searchRecipes() {
       if (this.recipeSearch) {
-        return this.filteredRecipes.filter((item)=>{
-          return (item.RecipeName.toLowerCase().startsWith(this.recipeSearch.toLowerCase()) || item.Author.toLowerCase().startsWith(this.recipeSearch.toLowerCase()));
-        })
-      }
-      else{
+        return this.filteredRecipes.filter((item) => {
+          return (
+            item.RecipeName.toLowerCase().startsWith(
+              this.recipeSearch.toLowerCase()
+            ) ||
+            item.Author.toLowerCase().startsWith(
+              this.recipeSearch.toLowerCase()
+            )
+          );
+        });
+      } else {
         return this.filteredRecipes;
       }
-    },
+    }
   },
   watch: {
-    checkedIngredients: function(newI, oldI) {
-        if (newI.length == 0) {
-          this.filteredRecipes = this.recipes;
-        }
-        else {
-          let filtered = [];
-          let recipes = this.recipes;
-          for (i = 0; i < recipes.length; i++){
-            if (recipes[i].rawFood && recipes[i].rawFood.some(function(item) { return newI.indexOf(item) !== -1;})) {
-              filtered.push(recipes[i]);
-            }
+    checkedIngredients: function (newI, oldI) {
+      if (newI.length == 0) {
+        this.filteredRecipes = this.recipes;
+      } else {
+        let filtered = [];
+        let recipes = this.recipes;
+        for (i = 0; i < recipes.length; i++) {
+          if (
+            recipes[i].rawFood &&
+            recipes[i].rawFood.some(function (item) {
+              return newI.indexOf(item) !== -1;
+            })
+          ) {
+            filtered.push(recipes[i]);
           }
-          this.filteredRecipes =  filtered;
         }
+        this.filteredRecipes = filtered;
+      }
     }
   },
   methods: {
@@ -133,6 +149,9 @@ new Vue({
     closeUserProfile() {
       this.showUserProfile = false;
     },
+    editName(newName) {
+      this.$firebaseRefs.loggedInUser.child("name").set(newName);
+    },
     openCreateRecipe() {
       this.showCreateRecipe = true;
     },
@@ -140,7 +159,7 @@ new Vue({
       this.showCreateRecipe = false;
     },
     addRecipe() {
-      alert("hasn't been implemented yet")
+      alert("hasn't been implemented yet");
     },
     login(user) {
       this.$firebaseRefs.loggedInUser.child("name").set(user.name);

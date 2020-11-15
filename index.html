@@ -124,6 +124,7 @@
           :show="showUserProfile"
           :user="this.loggedInUser"
           @close="closeUserProfile"
+          @edit_name = "editName"
         ></userprofile>
         <createrecipe
           :show="showCreateRecipe"
