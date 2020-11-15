@@ -28,10 +28,10 @@ module.exports = {
     }
   },
   methods: {
-    /* editName(){
-      this.nameItem = this.list
-      this.showNameEditor = true
+    openModal(){
+      alert("hey")
     },
+    /* 
     edit(stuff){
       const { item, val } = stuff
       this.$emit("edit-list-name", [this.list, val])

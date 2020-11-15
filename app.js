@@ -29,10 +29,12 @@ new Vue({
     backgroundColorVal: "",
     backgroundImageVal: "",
     newList: "",
+    searchQuery: null,
     showSignIn: false,
     showRegister: false,
     showUserProfile: false,
-    numberOfColumns: 3,
+    numberOfColumns: 4,
+    checkedIngredients: [],
   },
   firebase: {
     users: usersRef,
@@ -58,6 +60,16 @@ new Vue({
         gridTemplateColumns: `repeat(${this.numberOfColumns}, minmax(200px, 1fr))`
       }
     },
+    filteredIngredients() {
+      if (this.searchQuery) {
+        return this.ingredients.filter((item)=>{
+          return (item.name.toLowerCase().startsWith(this.searchQuery) || item.category.toLowerCase().startsWith(this.searchQuery));
+        })
+      }
+      else{
+        return this.ingredients;
+      }
+    }
   },
   methods: {
     //These methods are pretty straightforward based on the name, just updating firebase values based on user changes

@@ -119,19 +119,27 @@
       </nav>
       <!-- div that controls the background color/image using the style bindings from the header buttons -->
       <div v-if="this.loggedInUser.name.length" class="backgroundwrapper">
-        <div class="row board">
-          <div class="col-3" id="message-container">
-            <h2 class="row-fluid">Ingredients</h2>
+        <div class="row board headings">
+          <div class="col-2">
+            <h2>Ingredients</h2>
+          </div>
+          <div class="col-10">
+            <h2>Recipes</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
             <div class="row-fluid">
+              <input type="text" id="searchbar" v-model="searchQuery" placeholder="Search by name or category (e.g., dairy)">
               <ul>
-                <li v-for="ing in ingredients">
-                  {{ ing.name + " - " + ing.category }}
+                <li v-for="(ingredient, index) in filteredIngredients">
+                  <input type="checkbox" v-model="checkedIngredients"  :id="index" v-bind:value="ingredient.name">
+                  <label :for="index">{{ ingredient.name }}</label>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="col-9">
-            <h2>Recipes</h2>
+          <div class="col-10">
             <!-- generates Recipe components and handles its methods -->
             <ul class="card-list" :style="gridStyle">
               <li v-for="(recipe, index) in recipes" class="card-item">
@@ -177,6 +185,14 @@
       .row {
         max-width: 100%;
       }
+      .headings {
+        margin-left: 1em;
+      }
+      #searchbar {
+        margin-left: 1.75em;
+        margin-bottom: .5em;
+        margin-top: .1em;
+      }
       [hidden] {
         display: none !important;
       }
@@ -188,7 +204,7 @@
         grid-gap: 0.1em;
       }
       .card-item {
-        padding: 2em;
+        padding: .5em;
         height: 33% !important;
         width: 25% !important;
       }
@@ -212,9 +228,6 @@
       #landing-message {
         font-size: 2.75rem;
         line-height: 1.18181818;
-      }
-      #message-container {
-        display: flex;
       }
       #privacy-link {
         position: absolute;
