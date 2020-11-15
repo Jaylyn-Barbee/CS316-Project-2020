@@ -12,8 +12,7 @@
       </div>
       <button class="btn btn-light expander" @click="openModal" title="Open Recipe Details"><i class="fa fa-expand-arrows-alt" style="color: #0275d8" aria-hidden="true"></i></button>
     </div>
-    <!-- <add-task :show="showAddTask" :categories="allcategories" @create-task="addTask" @close="showAddTask = false"></add-task>
-    <edit-name :show="showNameEditor" @close="showNameEditor = false" @edit-name="edit" :item="nameItem"></edit-name> -->
+    <modal :recipe="recipe" :show="showModal" @close="closeModal"></modal>
   </div>
 </template>
 <script>
@@ -21,30 +20,22 @@ module.exports = {
   props: ['recipe'],
   data: function() {
     return {
-      /* 'showAddTask : false,
       showModal: false,
+      /* 'showAddTask : false,
       showNameEditor: false,
       nameItem: {} */
     }
   },
   methods: {
     openModal(){
-      alert("hey")
+      this.showModal = true
     },
-    /* 
-    edit(stuff){
-      const { item, val } = stuff
-      this.$emit("edit-list-name", [this.list, val])
-      this.showNameEditor = false
-      this.editInfo = ''
-      this.editValue = ''
+    closeModal(){
+      this.showModal = false
     },
-    deleteTask(task){
-      this.$emit('delete-task', task)
-    }, */
   },
   components: {
-    /*'task': httpVueLoader('Task.vue'), */
+    'modal': httpVueLoader('./Modal.vue'),
   }
 }
 </script>
