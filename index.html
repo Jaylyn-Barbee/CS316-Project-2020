@@ -133,7 +133,10 @@
             <h2>Ingredients</h2>
           </div>
           <div class="col-10">
-            <h2>Recipes</h2>
+            <span>
+              <h2 style="display: inline-block;">Recipes</h2>
+              <input type="text" id="recSearch" v-model="recipeSearch" placeholder="Search by name or author">
+            </span>
           </div>
         </div>
         <div class="row">
@@ -151,7 +154,7 @@
           <div class="col-10" id="recipe-grid">
             <!-- generates Recipe components and handles its methods -->
             <ul class="card-list" :style="gridStyle">
-              <li v-for="(recipe, index) in filteredRecipes" class="card-item">
+              <li v-for="(recipe, index) in searchRecipes" class="card-item">
                 <Recipe :recipe="recipe"></Recipe>
               </li>
             </ul>
@@ -197,6 +200,11 @@
         margin-bottom: .5em;
         margin-top: .1em;
         width: 12em;
+      }
+      #recSearch {
+        width: 20em;
+        margin-left: 1em;
+        display: inline-block;
       }
       #ing-list {
         max-height: 100vh;

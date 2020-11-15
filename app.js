@@ -29,7 +29,8 @@ new Vue({
     backgroundColorVal: "",
     backgroundImageVal: "",
     newList: "",
-    searchQuery: null,
+    searchQuery: '',
+    recipeSearch: '',
     showSignIn: false,
     showRegister: false,
     showUserProfile: false,
@@ -70,11 +71,21 @@ new Vue({
     filteredIngredients() {
       if (this.searchQuery) {
         return this.ingredients.filter((item)=>{
-          return (item.name.toLowerCase().startsWith(this.searchQuery) || item.category.toLowerCase().startsWith(this.searchQuery));
+          return (item.name.toLowerCase().startsWith(this.searchQuery.toLowerCase()) || item.category.toLowerCase().startsWith(this.searchQuery.toLowerCase()));
         })
       }
       else{
         return this.ingredients;
+      }
+    },
+    searchRecipes() {
+      if (this.recipeSearch) {
+        return this.filteredRecipes.filter((item)=>{
+          return (item.RecipeName.toLowerCase().startsWith(this.recipeSearch.toLowerCase()) || item.Author.toLowerCase().startsWith(this.recipeSearch.toLowerCase()));
+        })
+      }
+      else{
+        return this.filteredRecipes;
       }
     },
   },
