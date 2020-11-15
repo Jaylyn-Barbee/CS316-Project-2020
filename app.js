@@ -17,7 +17,7 @@ var loggedInRef = db.ref("loggedinUser");
 var bgColRef = db.ref("backgroundColor");
 var bgImgRef = db.ref("backgroundImage");
 var ingredientsRef = db.ref("ingredientsList");
-var recipesRef = db.ref("recipesList");
+var recipesRef = db.ref("recipeList");
 
 // connect Firebase to Vue
 Vue.use(VueFire);
@@ -31,7 +31,8 @@ new Vue({
     newList: "",
     showSignIn: false,
     showRegister: false,
-    showUserProfile: false
+    showUserProfile: false,
+    numberOfColumns: 3,
   },
   firebase: {
     users: usersRef,
@@ -45,15 +46,18 @@ new Vue({
   components: {
     login: httpVueLoader("./components/Login.vue"),
     register: httpVueLoader("./components/Register.vue"),
-    userprofile: httpVueLoader("./components/UserProfile.vue")
+    userprofile: httpVueLoader("./components/UserProfile.vue"),
+    recipe: httpVueLoader("./components/Recipe.vue")
     /*'add-list': httpVueLoader('AddList.vue'),
     'list': httpVueLoader('List.vue'),
     'categories': httpVueLoader('Categories.vue') */
   },
   computed: {
-    /*lengthLists: function(){
-      return this.myLists.length
-    }, */
+    gridStyle() {
+      return {
+        gridTemplateColumns: `repeat(${this.numberOfColumns}, minmax(200px, 1fr))`
+      }
+    },
   },
   methods: {
     //These methods are pretty straightforward based on the name, just updating firebase values based on user changes

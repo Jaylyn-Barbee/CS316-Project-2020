@@ -132,9 +132,10 @@
           </div>
           <div class="col-9">
             <h2>Recipes</h2>
-            <ul>
-              <li v-for="recipe in recipes">
-                {{ recipe['RecipeName'] + ' by ' + recipe['Author'] }}
+            <!-- generates Recipe components and handles its methods -->
+            <ul class="card-list" :style="gridStyle">
+              <li v-for="(recipe, index) in recipes" class="card-item">
+                <Recipe :recipe="recipe"></Recipe>
               </li>
             </ul>
           </div>
@@ -152,7 +153,7 @@
           <img src="./assets/image.png" id="landing-img" />
         </div>
       </div>
-      <div id="privacy-link">
+      <div class="row board" id="privacy-link">
         <a href="">Terms of Service </a>
         |
         <a href="">Privacy Policy </a>
@@ -182,7 +183,18 @@
       .board {
         padding-top: 5% !important;
       }
-
+      .card-list {
+        display: grid;
+        grid-gap: 0.1em;
+      }
+      .card-item {
+        padding: 2em;
+        height: 33% !important;
+        width: 25% !important;
+      }
+      ul {
+        list-style-type: none;
+      }
       #propic {
         display: inline;
         object-fit: cover;
@@ -206,7 +218,6 @@
       }
       #privacy-link {
         position: absolute;
-        bottom: 0;
         text-align: center;
         width: 100%;
       }
