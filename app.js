@@ -58,8 +58,9 @@ new Vue({
   },
   computed: {
     gridStyle() {
+      let numberOfColumns = Math.floor(window.screen.width / 400);
       return {
-        gridTemplateColumns: `repeat(${this.numberOfColumns}, minmax(200px, 1fr))`
+        gridTemplateColumns: `repeat(${numberOfColumns}, minmax(200px, 1fr))`
       }
     },
     filteredIngredients() {

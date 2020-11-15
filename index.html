@@ -140,7 +140,7 @@
           <div class="col-2">
             <div class="row-fluid">
               <input type="text" id="searchbar" v-model="searchQuery" placeholder="Search by name or category (e.g., dairy)">
-              <ul>
+              <ul id="ing-list">
                 <li v-for="(ingredient, index) in filteredIngredients">
                   <input type="checkbox" v-model="checkedIngredients"  :id="index" v-bind:value="ingredient.name">
                   <label :for="index">{{ ingredient.name }}</label>
@@ -148,7 +148,7 @@
               </ul>
             </div>
           </div>
-          <div class="col-10">
+          <div class="col-10" id="recipe-grid">
             <!-- generates Recipe components and handles its methods -->
             <ul class="card-list" :style="gridStyle">
               <li v-for="(recipe, index) in recipes" class="card-item">
@@ -169,11 +169,6 @@
         <div class="col-6">
           <img src="./assets/image.png" id="landing-img" />
         </div>
-      </div>
-      <div class="row board" id="privacy-link">
-        <a href="">Terms of Service </a>
-        |
-        <a href="">Privacy Policy </a>
       </div>
     </div>
 
@@ -201,6 +196,15 @@
         margin-left: 1.75em;
         margin-bottom: .5em;
         margin-top: .1em;
+        width: 18em;
+      }
+      #ing-list {
+        max-height: 100vh;
+        overflow-y: scroll;
+      }
+      #recipe-grid {
+        max-height: 100vh;
+        overflow-y: scroll;
       }
       [hidden] {
         display: none !important;
