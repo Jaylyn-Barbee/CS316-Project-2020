@@ -63,7 +63,7 @@ new Vue({
   },
   computed: {
     gridStyle() {
-      let numberOfColumns = Math.floor(window.screen.width / 400);
+      let numberOfColumns = Math.floor(window.screen.width / 450);
       return {
         gridTemplateColumns: `repeat(${numberOfColumns}, minmax(200px, 1fr))`
       };
@@ -149,8 +149,18 @@ new Vue({
     closeUserProfile() {
       this.showUserProfile = false;
     },
-    editName(newName) {
-      this.$firebaseRefs.loggedInUser.child("name").set(newName);
+    editInfo(newInfo) {
+      let [newString, type] = newInfo;
+      let currName = this.loggedInUser.name;
+      let currEmail = this.loggedInUser.email;
+      let currPic = this.loggedInUser.image;
+      usersRef.once('value', function(snapshot){ 
+        snapshot.forEach(function(itemSnapshot) {
+          if (itemSnapshot.val().name == currName && itemSnapshot.val().email == currEmail && itemSnapshot.val().image == currPic)
+           itemSnapshot.ref.child(type).set(newString);
+           loggedInRef.child(type).set(newString);
+       }) 
+      })
     },
     openCreateRecipe() {
       this.showCreateRecipe = true;

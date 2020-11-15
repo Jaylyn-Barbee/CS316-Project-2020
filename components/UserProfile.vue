@@ -12,16 +12,19 @@
           <div class="row-fluid">
             <div class="col-xs-12">
               <img :src="user.image" class="propic" alt="" height = "200" length = "200" >
-              <p>Name: {{ user.name }} </p>
-              <button type="button" class="btn btn-sm" @click="edit_name(user)">
-              <i class="fa fa-edit"></i>
-              </button>
-              <p>Email: {{ user.email }} </p>
-              <button type="button" class="btn btn-sm" @click="edit_email(user)">
-              <i class="fa fa-edit"></i>
-              </button>
-              
             </div>
+          </div>
+          <div class="row-fluid">
+              <p>Name: {{ user.name }} </p>
+              <button type="button" class="btn btn-sm" @click="editName(user)">
+              <i class="fa fa-edit"></i>
+              </button>
+          </div>
+          <div class="row-fluid">
+              <p>Email: {{ user.email }} </p>
+              <button type="button" class="btn btn-sm" @click="editEmail(user)">
+              <i class="fa fa-edit"></i>
+              </button>
           </div>
         </div>
       </div>
@@ -41,29 +44,24 @@ module.exports = {
     closeModal() {
       this.$emit("close");
     },
-    edit_name(user) {
+    editName(user) {
       var newName = prompt(
-        "What would you like to rename user " + user.name + "?",
+        "What would you like to rename user ''" + user.name + "'?",
         user.name
       );
       if (newName != null && newName != "") {
-        this.$emit("editName", newName);
-        user.name = newName;
-        // this.name = newName;
+        this.$emit("edit-info", [newName, "name"]);
       }
     },
-
-    edit_email(user) {
+    editEmail(user) {
       var newEmail = prompt(
-        "Would you like to change your email to? It is currently " +
+        "Would you like to change your email? It is currently " +
           user.email +
           ".",
         user.email
       );
       if (newEmail != null && newEmail != "") {
-        this.$emit("editEmail", newEmail);
-        user.email = newEmail;
-        // this.name = newName;
+        this.$emit("edit-info", [newEmail, "email"]);
       }
     },
   },
