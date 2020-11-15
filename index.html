@@ -122,9 +122,15 @@
         ></register>
         <userprofile
           :show="showUserProfile"
+          :user="this.loggedInUser"
           @close="closeUserProfile"
         ></userprofile>
-        <createrecipe :show="showCreateRecipe" :author="this.loggedInUser" @close="closeCreateRecipe" @add-recipe="addRecipe"></createrecipe>
+        <createrecipe
+          :show="showCreateRecipe"
+          :author="this.loggedInUser"
+          @close="closeCreateRecipe"
+          @add-recipe="addRecipe"
+        ></createrecipe>
       </nav>
       <!-- div that controls the background color/image using the style bindings from the header buttons -->
       <div v-if="this.loggedInUser.name.length" class="backgroundwrapper">
@@ -135,17 +141,32 @@
           <div class="col-10">
             <span>
               <h2 style="display: inline-block;">Recipes</h2>
-              <input type="text" id="recSearch" v-model="recipeSearch" placeholder="Search by name or author">
+              <input
+                type="text"
+                id="recSearch"
+                v-model="recipeSearch"
+                placeholder="Search by name or author"
+              />
             </span>
           </div>
         </div>
         <div class="row">
           <div class="col-2">
             <div class="row-fluid">
-              <input type="text" id="searchbar" v-model="searchQuery" placeholder="Search by name or category (e.g., dairy)">
+              <input
+                type="text"
+                id="searchbar"
+                v-model="searchQuery"
+                placeholder="Search by name or category (e.g., dairy)"
+              />
               <ul id="ing-list">
                 <li v-for="(ingredient, index) in filteredIngredients">
-                  <input type="checkbox" v-model="checkedIngredients"  :id="index" v-bind:value="ingredient.name">
+                  <input
+                    type="checkbox"
+                    v-model="checkedIngredients"
+                    :id="index"
+                    v-bind:value="ingredient.name"
+                  />
                   <label :for="index">{{ ingredient.name }}</label>
                 </li>
               </ul>
@@ -197,8 +218,8 @@
       }
       #searchbar {
         margin-left: 1.75em;
-        margin-bottom: .5em;
-        margin-top: .1em;
+        margin-bottom: 0.5em;
+        margin-top: 0.1em;
         width: 12em;
       }
       #recSearch {
@@ -225,7 +246,7 @@
         grid-gap: 0.1em;
       }
       .card-item {
-        padding: .5em;
+        padding: 0.5em;
         height: 33% !important;
         width: 25% !important;
       }

@@ -11,15 +11,8 @@
         <div class="modal-body">
           <div class="row-fluid">
             <div class="col-xs-12">
-              <img src="loggedin.image" id="propic" />
-              <p>Name: {{ loggedin.name }}</p>
-              <button class="btn btn-success" @click="edit_name">
-                Edit Name
-              </button>
-              <p>Email: {{ loggedin.email }}</p>
-              <button class="btn btn-success" @click="edit_email">
-                Edit Email
-              </button>
+              <p>Name: {{ user.name }} </p>
+              <p>Email: {{ user.email }} </p>
             </div>
           </div>
         </div>
@@ -35,7 +28,7 @@ module.exports = {
       email: "",
     };
   },
-  props: ["users", "show"],
+  props: ["user", "show"],
   methods: {
     closeModal() {
       this.$emit("close");
