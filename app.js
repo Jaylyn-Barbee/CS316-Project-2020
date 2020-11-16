@@ -168,8 +168,8 @@ new Vue({
     closeCreateRecipe() {
       this.showCreateRecipe = false;
     },
-    addRecipe() {
-      alert("hasn't been implemented yet");
+    addRecipe(rec) {
+      recipesRef.push(rec);
     },
     login(user) {
       this.$firebaseRefs.loggedInUser.child("name").set(user.name);

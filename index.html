@@ -128,7 +128,7 @@
         ></userprofile>
         <createrecipe
           :show="showCreateRecipe"
-          :author="this.loggedInUser"
+          :author="this.loggedInUser.name"
           @close="closeCreateRecipe"
           @add-recipe="addRecipe"
         ></createrecipe>
