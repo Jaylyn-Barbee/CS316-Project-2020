@@ -131,13 +131,7 @@ module.exports = {
         RecipePhoto: this.photo,
         rawFood: this.ingredients,
       });
-      (this.name = ""),
-        (this.cooktime = ""),
-        (this.preptime = ""),
-        (this.ingredientbox = ""),
-        (this.directionbox = ""),
-        (this.directions = []),
-        (this.ingredients = []);
+      this.closeModal();
     },
     addIng() {
       this.ingredients.push(this.ingredientbox);
@@ -156,7 +150,6 @@ module.exports = {
       reader.readAsDataURL(file);
       reader.onload = function (e) {
         self.photo = e.target.result;
-        console.log(self)
       };
     },
   },

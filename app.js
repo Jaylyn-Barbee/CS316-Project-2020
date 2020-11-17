@@ -28,7 +28,6 @@ new Vue({
     //these two are not doubling the firebase backgroundColor or backgroundImage bc CSS binding only works on the event.target.value, not the snapshot
     backgroundColorVal: "",
     backgroundImageVal: "",
-    newList: "",
     searchQuery: "",
     recipeSearch: "",
     showSignIn: false,
@@ -57,9 +56,6 @@ new Vue({
     userprofile: httpVueLoader("./components/UserProfile.vue"),
     recipe: httpVueLoader("./components/Recipe.vue"),
     createrecipe: httpVueLoader("./components/CreateRecipe.vue")
-    /*'add-list': httpVueLoader('AddList.vue'),
-    'list': httpVueLoader('List.vue'),
-    'categories': httpVueLoader('Categories.vue') */
   },
   computed: {
     gridStyle() {
@@ -181,6 +177,10 @@ new Vue({
       this.$firebaseRefs.loggedInUser.child("name").set("");
       this.$firebaseRefs.loggedInUser.child("email").set("");
       this.$firebaseRefs.loggedInUser.child("image").set("");
+      this.checkedIngredients = []
+      this.filteredRecipes = []
+      this.searchQuery = ""
+      this.recipeSearch = ""
     },
     backgroundImageUpload(event) {
       //FileReader handles the uploading of the file, when it loads it sets the Firebase background image
