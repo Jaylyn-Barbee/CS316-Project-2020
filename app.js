@@ -1,13 +1,12 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const config = {
-  apiKey: "AIzaSyDULic6juH_JdmWudQ8qECnuD70_nODbWY",
-  authDomain: "cs316-g37-2020.firebaseapp.com",
-  databaseURL: "https://cs316-g37-2020.firebaseio.com",
-  projectId: "cs316-g37-2020",
-  storageBucket: "cs316-g37-2020.appspot.com",
-  messagingSenderId: "1017331525000",
-  appId: "1:1017331525000:web:d59cd3793d88044ff8063d",
-  measurementId: "G-L0Q3SWCX9L"
+  apiKey: "AIzaSyDnjUoBf8WKrvlufZvlxeS20iu_8rj4hmc",
+  authDomain: "databases-project-872ac.firebaseapp.com",
+  databaseURL: "https://databases-project-872ac.firebaseio.com",
+  projectId: "databases-project-872ac",
+  storageBucket: "databases-project-872ac.appspot.com",
+  messagingSenderId: "96462352688",
+  appId: "1:96462352688:web:db9dcb71d3b2d3ef4a58f5"
 };
 // global access to initialized app database
 var db = firebase.initializeApp(config).database();
